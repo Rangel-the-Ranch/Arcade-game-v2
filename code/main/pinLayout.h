@@ -5,3 +5,7 @@
 
 #define BUTTON_1_PIN 6
 #define BUTTON_2_PIN 8
+
+#define JOYSTICK_1_X_PIN A0
+#define JOYSTICK_1_Y_PIN A1
+#define JOYSTICK_1_D_PIN 9

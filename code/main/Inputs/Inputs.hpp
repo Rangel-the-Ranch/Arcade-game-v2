@@ -4,10 +4,9 @@
 #include"Joystick.hpp"
 
 class Inputs{
-    private:
+    public:
         static const unsigned int BUTTON_COUNT = 2;
         static const unsigned int JOYSTICK_COUNT = 1;
-    public:
 
         void setButtonPin(int newPin, int id);
         void setButtonPin(const int (&newPins)[BUTTON_COUNT]);
