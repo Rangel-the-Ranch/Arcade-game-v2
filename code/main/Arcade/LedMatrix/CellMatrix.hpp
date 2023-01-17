@@ -50,9 +50,7 @@ void CellMatrix::applyMatrix(const Cell (&newMatrix)[MAX_SIZE_X_ALL][MAX_SIZE_Y_
     Adafruit_NeoPixel temp(PIXEL_COUNT , m_Pin , NEO_GRB + NEO_KHZ800);
     temp.begin();
     temp.clear();
-    if(startX == 0){
-        return;
-    }
+    
     int currPixel = 0;
     for (int x = startX; x < MAX_SIZE_X + startX; x++) {
 

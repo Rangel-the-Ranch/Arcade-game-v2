@@ -4,15 +4,12 @@ class Cell{
     public:
         Cell();
         Cell(int newRed, int newGreen, int newBlue);
-        Cell(const String& str);
-        Cell(const Cell& other);
-
+        
         void setRed(int newRed);
         void setBlue(int newBlue);
         void setGreen(int newGreen);
         void set(int newRed, int newGreen, int newBlue);
-        void set(const Cell& other);
-        void set(const String& str);
+        void set(String& str);
         void clear();
         void setMax();
 
@@ -20,10 +17,9 @@ class Cell{
         int getBlue()const;
         int getGreen()const;
 
-        Cell& operator=(const Cell& other);
-        Cell& operator=(const String& str);
 
     private:
+
         static const unsigned int MAX_VALUE = 8;
         
         char m_Red;
@@ -32,44 +28,20 @@ class Cell{
 
         
 };
-Cell::Cell(const Cell& other){
-    set(other);
-}
-Cell& Cell::operator=(const Cell& other){
-    set(other);
-    return *this;
-}
-Cell& Cell::operator=(const String& str){
-    set(str);
-    return *this;
-}
-void Cell::set(const Cell& other){
-    m_Blue = other.m_Blue;
-    m_Red = other.m_Red;
-    m_Green = other.m_Green;
-}
 void Cell::setMax(){
     set(MAX_VALUE-1,MAX_VALUE-1,MAX_VALUE-1);
 }
 
-Cell::Cell(const String& str){
-    set(str);
-}
-
-void Cell::set(const String& str){
-  if(str == "Blue" || str == "blue"){
-      set(0,0,MAX_VALUE-1);
-  }else if(str == "Red" || str == "red"){
-      set(MAX_VALUE-1,0,0);
-  }else if(str == "Green" || str == "green"){
-    set(0,MAX_VALUE-1,0);
-  }else if(str == "White" || str == "white"){
-    set(MAX_VALUE-1,MAX_VALUE-1,MAX_VALUE-1);
-  }else if(str == "Black" || str == "black"){
-    set(0,0,0);
-  }else{
-    set(0,0,0);
-  }
+void Cell::set(String& str){
+    if(str == "Blue" || str == "blue"){
+        set(0,0,80);
+    }else if(str == "Red" || str == "red"){
+        set(80,0,0);
+    }else if(str == "Green" || str == "green"){
+        set(0,80,0);
+    }else{
+        set(0,0,0);
+    }
 }
 
 

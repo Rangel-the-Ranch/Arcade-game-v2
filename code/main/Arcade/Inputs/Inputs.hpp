@@ -5,7 +5,7 @@
 
 class Inputs{
     public:
-        static const unsigned int BUTTON_COUNT = 2;
+        static const unsigned int BUTTON_COUNT = 3;
         static const unsigned int JOYSTICK_COUNT = 1;
 
         void setButtonPin(int newPin, int id);

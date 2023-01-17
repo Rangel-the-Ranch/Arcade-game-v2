@@ -36,6 +36,7 @@ void Arcade::pinDeclaration(){
 
     m_Input.setButtonPin(BUTTON_1_PIN, 0);
     m_Input.setButtonPin(BUTTON_2_PIN, 1);
+    m_Input.setButtonPin(BUTTON_3_PIN, 2);
 
     m_Input.setJoystickPin(JOYSTICK_1_D_PIN,JOYSTICK_1_X_PIN,JOYSTICK_1_Y_PIN, 0);
 }
