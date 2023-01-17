@@ -13,7 +13,8 @@ class Arcade{
         static const unsigned int BUTTON_COUNT = Inputs::BUTTON_COUNT;
         static const unsigned int JOYSTICK_COUNT = Inputs::JOYSTICK_COUNT;
 
-        void show(const Cell (&newMatrix)[MATRIX_SIZE_X][MATRIX_SIZE_Y] );
+        void show(const Cell (&newMatrix)[MATRIX_SIZE_X][MATRIX_SIZE_Y] )const;
+        void clear()const;
 
         int button(int id)const;
         int joystickX(int id)const;
@@ -41,9 +42,13 @@ void Arcade::pinDeclaration(){
 
 Arcade::Arcade(){
     pinDeclaration();
+
 }
-void Arcade::show(const Cell (&newMatrix)[MATRIX_SIZE_X][MATRIX_SIZE_Y]){
+void Arcade::show(const Cell (&newMatrix)[MATRIX_SIZE_X][MATRIX_SIZE_Y])const{
     m_Screen.applyMatrix(newMatrix);
+}
+void Arcade::clear()const{
+    m_Screen.clear();
 }
 
 int Arcade::button(int id)const{

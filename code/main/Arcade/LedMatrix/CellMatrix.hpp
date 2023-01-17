@@ -14,7 +14,8 @@ class CellMatrix{
         CellMatrix(int newPin);
         
         void setPin(int newPin);
-        void applyMatrix(const Cell (&newMatrix)[MAX_SIZE_X_ALL][MAX_SIZE_Y_ALL],int startX,int startY);
+        void applyMatrix(const Cell (&newMatrix)[MAX_SIZE_X_ALL][MAX_SIZE_Y_ALL],int startX,int startY)const;
+        void clear()const;
 
     private:
 
@@ -31,8 +32,18 @@ void CellMatrix::setPin(int newPin){
 CellMatrix::CellMatrix(int newPin){
     setPin(newPin);
 }
+void CellMatrix::clear()const{
+    if(m_Pin == -1){
+        return;
+    }
+    Adafruit_NeoPixel temp(PIXEL_COUNT , m_Pin , NEO_GRB + NEO_KHZ800);
+    temp.begin();
+    temp.clear();
+    
+    temp.show();
 
-void CellMatrix::applyMatrix(const Cell (&newMatrix)[MAX_SIZE_X_ALL][MAX_SIZE_Y_ALL],int startX,int startY){
+}
+void CellMatrix::applyMatrix(const Cell (&newMatrix)[MAX_SIZE_X_ALL][MAX_SIZE_Y_ALL],int startX,int startY)const{
     if(m_Pin == -1){
         return;
     }

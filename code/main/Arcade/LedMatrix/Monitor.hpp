@@ -9,7 +9,9 @@ class Monitor{
         static const unsigned int CELLS_IN_Y = MATRIX_IN_Y * CellMatrix::MAX_SIZE_Y;
 
         void setPin(unsigned int matX,unsigned int matY, int newPin);
-        void applyMatrix(const Cell (&newMatrix)[CELLS_IN_X][CELLS_IN_X]);
+
+        void applyMatrix(const Cell (&newMatrix)[CELLS_IN_X][CELLS_IN_X])const;
+        void clear()const;
 
 
     private:
@@ -24,10 +26,17 @@ void Monitor::setPin(unsigned int matX,unsigned int matY, int newPin){
     m_Libs[matX][matY].setPin(newPin);
 }
 
-void Monitor::applyMatrix(const Cell (&newMatrix)[CELLS_IN_X][CELLS_IN_Y]){
+void Monitor::applyMatrix(const Cell (&newMatrix)[CELLS_IN_X][CELLS_IN_Y])const{
     for(int x=0; x<MATRIX_IN_X; x++){
         for(int y=0; y<MATRIX_IN_Y; y++){
             m_Libs[x][y].applyMatrix(newMatrix, x*CellMatrix::MAX_SIZE_X, y*CellMatrix::MAX_SIZE_Y);
+        }
+    }
+}
+void Monitor::clear()const{
+    for(int x=0; x<MATRIX_IN_X; x++){
+        for(int y=0; y<MATRIX_IN_Y; y++){
+            m_Libs[x][y].clear();
         }
     }
 }
