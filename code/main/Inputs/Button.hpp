@@ -6,7 +6,7 @@ class Button{
         Button(int newPin);
         void setPin(int newPin);
 
-        bool get()const;
+        int get()const;
 
     private:
         int m_PinOut = -1;
@@ -14,7 +14,10 @@ class Button{
         void declarePinMode()const;
 };
 
-bool Button::get()const{
+int Button::get()const{
+    if(m_PinOut == -1){
+        return -1;
+    }
     return digitalRead(m_PinOut);
 }
 
