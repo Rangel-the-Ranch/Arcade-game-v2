@@ -23,6 +23,8 @@ class Cell{
         Cell& operator=(const Cell& other);
         Cell& operator=(const String& str);
 
+        bool operator==(const String& str);//////////////////
+
     private:
         static const unsigned int MAX_VALUE = 8;
         
@@ -32,6 +34,10 @@ class Cell{
 
         
 };
+bool Cell::operator==(const String& str){
+    Cell temp(str);
+    return (m_Red == temp.m_Red) && (m_Green == temp.m_Green) && (m_Blue == temp.m_Blue);
+}
 Cell::Cell(const Cell& other){
     set(other);
 }
@@ -67,6 +73,8 @@ void Cell::set(const String& str){
     set(MAX_VALUE-1,MAX_VALUE-1,MAX_VALUE-1);
   }else if(str == "Black" || str == "black"){
     set(0,0,0);
+  }else if(str == "Cyan" || str == "cyan"){
+    set(0,(MAX_VALUE/5)*3,(MAX_VALUE/5)*3);
   }else{
     set(0,0,0);
   }

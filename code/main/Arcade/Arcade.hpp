@@ -27,6 +27,7 @@ class Arcade{
 
     void pinDeclaration();
 };
+Arcade Arcade;
 
 void Arcade::pinDeclaration(){
     m_Screen.setPin(0,0,TOP_LEFT_PIN);
