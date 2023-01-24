@@ -3,9 +3,15 @@
 #include"Games/Games.hpp"
 
 void setup() { 
-  Arcade.clear();
   Serial.begin(9600);
+  Arcade.clear();
+
   Games::play("testGame");
+
+
+
+
+  
   //pinMode(9,OUTPUT);
   //pinMode(10,OUTPUT);
 }

@@ -10,16 +10,19 @@ class Sonic{
         int vX=0, vY=0;
         bool isOut = false;
 
-        int enemyX=8, enemyY=8;
+        int enemyX=4, enemyY=8;
+        int enemyVx = 1, enemyVy = 1; 
 
         void generateTerain();
         void print(); 
+        void gameOver();
 
         void getDirection();
         void playerMove();
         void fillUp();
         void fillRec(int x, int y);
         void loop();
+        void enemyMove();
 };
 
 Sonic::Sonic(){
@@ -30,6 +33,7 @@ Sonic::Sonic(){
 void Sonic::loop(){
     getDirection();
     playerMove();
+    enemyMove();
     print();
     loop();
 
@@ -107,6 +111,9 @@ void Sonic::print(){
             case 'o':
                 color = "cyan";
                 break;
+            case 'x':
+                color = "red";
+                break;
             }
             screen[2*x][2*y].set(color);
             screen[2*x][2*y+1].set(color);
@@ -150,4 +157,27 @@ void Sonic::getDirection(){
     }else if( Arcade.joystickY(0) < 300 ){
         vY = 1;
     }
+}
+void Sonic::enemyMove(){
+    if(map[enemyX + enemyVx][enemyY] == '#'){
+        enemyVx *= -1;
+    }
+    if(map[enemyX][enemyY + enemyVy] == '#'){
+        enemyVy *= -1;
+    }
+    Serial.println(enemyX);
+    enemyX += enemyVx;
+    enemyY += enemyVy;
+    if(map[enemyX][enemyY] == 'o'){
+        gameOver();
+    }
+}
+void Sonic::gameOver(){
+    for(int x=0; x<16; x++){
+        for(int y=0; y< 16; y++){
+            map[x][y] = 'x';
+        }
+    }
+    print();
+    while(true){};
 }
